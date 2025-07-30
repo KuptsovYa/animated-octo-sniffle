@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Implementation-Title: com.sonatype.licensing:license-bundle
+Implementation-Version: 1.6.0
+Archiver-Version: Plexus Archiver
+Built-By: jenkins
+Specification-Vendor: Sonatype, Inc.
+Specification-Title: com.sonatype.licensing:license-bundle
+Implementation-Vendor-Id: com.sonatype.licensing
+Implementation-Vendor: Sonatype, Inc.
+Created-By: Apache Maven 3.3.3
+Build-Jdk: 1.8.0_202
+Specification-Version: 1.6.0
+Implementation-URL: http://github.com/sonatype/sonatype-licensing/lice
+ nse-bundle
+
