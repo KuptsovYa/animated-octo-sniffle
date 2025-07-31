@@ -22,7 +22,7 @@ import org.sonatype.licensing.feature.FeatureValidator;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultTrialLicenseManager implements TrialLicenseManager {
   private final Logger evv = LoggerFactory.getLogger(getClass());
   

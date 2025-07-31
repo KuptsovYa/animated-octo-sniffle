@@ -15,7 +15,7 @@ import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.SslKeyContainer;
 
 @EqualsAndHashCode(callSuper = true)
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultLicenseKey extends AbstractLicenseKey implements LicenseKey, ProductLicenseKey {
   private final Logger fjz = LoggerFactory.getLogger(DefaultLicenseKey.class);
   

@@ -18,7 +18,7 @@ import org.sonatype.licensing.product.access.AccessManager;
 import org.sonatype.licensing.product.access.io.AccessPersistence;
 
 @Singleton
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultAccessManager implements AccessManager {
     public static final int DEFAULT_MAX_ENTRIES_BETWEEN_SAVE = 100;
 

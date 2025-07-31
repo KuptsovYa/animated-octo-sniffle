@@ -16,7 +16,7 @@ import org.sonatype.licensing.product.access.io.AccessPersistence;
 import org.sonatype.licensing.product.access.io.FileFormat;
 import org.sonatype.licensing.product.access.io.FileFormatRegistry;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultAccessPersistence implements AccessPersistence {
   private static final Logger evv = LoggerFactory.getLogger(DefaultAccessPersistence.class);
   

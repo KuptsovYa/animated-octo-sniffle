@@ -20,7 +20,7 @@ import org.sonatype.licensing.product.ProductLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class DefaultProductLicenseManager implements ProductLicenseManager {
   private final TrialLicenseManager aff;

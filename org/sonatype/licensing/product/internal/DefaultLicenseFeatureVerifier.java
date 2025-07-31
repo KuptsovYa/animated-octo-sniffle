@@ -16,7 +16,7 @@ import org.sonatype.licensing.feature.FeatureValidator;
 import org.sonatype.licensing.feature.LicenseFeatureVerifier;
 import org.sonatype.licensing.product.ProductLicenseKey;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class DefaultLicenseFeatureVerifier implements LicenseFeatureVerifier {
   private final Logger evv = LoggerFactory.getLogger(getClass());

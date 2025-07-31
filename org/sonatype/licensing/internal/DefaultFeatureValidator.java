@@ -6,7 +6,7 @@ import org.sonatype.licensing.LicensingException;
 import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.FeatureValidator;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultFeatureValidator implements FeatureValidator {
   public boolean isValid(Feature paramFeature, LicenseKey paramLicenseKey) {
     return (paramLicenseKey.isEvaluation() || paramLicenseKey.getFeatureSet().hasFeature(paramFeature));

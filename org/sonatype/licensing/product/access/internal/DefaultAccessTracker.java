@@ -9,7 +9,7 @@ import org.sonatype.licensing.product.access.AccessEntry;
 import org.sonatype.licensing.product.access.AccessManager;
 import org.sonatype.licensing.product.access.AccessTracker;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultAccessTracker implements AccessTracker {
   private final AccessManager krh;
   

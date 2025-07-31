@@ -3,7 +3,7 @@ package org.sonatype.licensing;
 import java.util.prefs.Preferences;
 import javax.inject.Named;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultPreferencesFactory implements PreferencesFactory {
   public Preferences nodeForPackage(Class<?> paramClass) {
     return Preferences.userNodeForPackage(paramClass);

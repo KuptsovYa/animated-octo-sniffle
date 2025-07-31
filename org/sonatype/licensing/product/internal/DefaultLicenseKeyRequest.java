@@ -20,7 +20,7 @@ import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.product.SslKeyContainer;
 import org.sonatype.licensing.util.LicensingUtil;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 public class DefaultLicenseKeyRequest extends bos implements ProductLicenseKeyRequest {
   private final Logger fjz = LoggerFactory.getLogger(DefaultLicenseKeyRequest.class);
   

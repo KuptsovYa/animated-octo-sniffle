@@ -19,7 +19,7 @@ import org.sonatype.licensing.LicensingException;
 import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.FeatureValidator;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Deprecated
 public class DefaultLicenseManager implements LicenseManager {
   private final Provider<LicenseKey> cgs;
