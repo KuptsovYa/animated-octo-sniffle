@@ -15,29 +15,32 @@ import org.sonatype.licensing.product.ProductLicenseManager;
 @Singleton
 public class LicenseContent {
   private final ProductLicenseManager sua;
-  
-  private final String qbc;
-  
+
+//  private final String qbc;
+
   private final PreferencesFactory xpt;
-  
+
   @Inject
-  public LicenseContent(LicenseBuilder paramLicenseBuilder, ProductLicenseManager paramProductLicenseManager, PreferencesFactory paramPreferencesFactory) {
+  public LicenseContent(
+//          LicenseBuilder paramLicenseBuilder,
+          ProductLicenseManager paramProductLicenseManager,
+          PreferencesFactory paramPreferencesFactory) {
     this.sua = paramProductLicenseManager;
-    this.qbc = paramLicenseBuilder.getPreferenceNodePath();
+//    this.qbc = paramLicenseBuilder.getPreferenceNodePath();
     this.xpt = paramPreferencesFactory;
   }
-  
-  public byte[] raw() {
-    return Base64.decodeBase64(this.xpt.nodeForPath(this.qbc).get("license", null));
-  }
-  
+
+//  public byte[] raw() {
+//    return Base64.decodeBase64(this.xpt.nodeForPath(this.qbc).get("license", null));
+//  }
+
   public ProductLicenseKey key() {
     try {
       return this.sua.getLicenseDetails();
     } catch (LicensingException licensingException) {
       LicenseKey licenseKey = licensingException.getKey();
       return !(licenseKey instanceof ProductLicenseKey) ? null : (ProductLicenseKey)licenseKey;
-    } 
+    }
   }
 }
 
