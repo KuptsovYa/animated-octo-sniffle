@@ -1,9 +1,8 @@
 package org.sonatype.licensing;
 
 import de.schlichtherle.license.LicenseContent;
-import de.schlichtherle.license.LicenseContentException;
 
-public class LicenseContentException extends LicenseContentException {
+public class LicenseContentException extends de.schlichtherle.license.LicenseContentException {
   private final LicenseContent tex;
   
   public LicenseContentException(String paramString, LicenseContent paramLicenseContent) {

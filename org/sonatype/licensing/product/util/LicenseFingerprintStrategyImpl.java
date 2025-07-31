@@ -35,7 +35,7 @@ public class LicenseFingerprintStrategyImpl implements LicenseFingerprintStrateg
     itm(messageDigest, paramProductLicenseKey.getLicensedUsers());
     messageDigest.update((byte)(paramProductLicenseKey.isEvaluation() ? 1 : 0));
     messageDigest.update((byte)(paramProductLicenseKey.isFreeLicense() ? 1 : 0));
-    ArrayList<Comparable> arrayList = Lists.newArrayList(paramProductLicenseKey.getRawFeatures());
+    ArrayList<String> arrayList = Lists.newArrayList(paramProductLicenseKey.getRawFeatures());
     Collections.sort(arrayList);
     for (String str : arrayList)
       itm(messageDigest, str); 

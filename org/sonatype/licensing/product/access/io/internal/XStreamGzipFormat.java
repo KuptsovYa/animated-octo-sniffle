@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-import javax.enterprise.inject.Typed;
+//import javax.enterprise.inject.Typed;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import org.sonatype.licensing.product.access.AccessEntrySet;
@@ -14,7 +14,7 @@ import org.sonatype.licensing.product.access.io.FileFormat;
 
 @Named
 @Singleton
-@Typed({FileFormat.class})
+//@Typed({FileFormat.class})
 public class XStreamGzipFormat extends XStreamFormat {
   public static final int ID = 2;
   

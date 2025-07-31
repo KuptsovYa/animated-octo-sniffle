@@ -3,6 +3,7 @@ package codeguard.licensing;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public abstract class itm implements eui {
   private final Class itm;
@@ -20,19 +21,31 @@ public abstract class itm implements eui {
       throw new FileNotFoundException(this.omj); 
     return inputStream;
   }
-  
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    itm itm1 = (itm) o;
+    return Objects.equals(itm, itm1.itm) && Objects.equals(omj, itm1.omj);
+  }
+
+  @Override
   public int hashCode() {
-    null = 5;
-    null = 97 * null + ((this.itm != null) ? this.itm.hashCode() : 0);
-    return 97 * null + ((this.omj != null) ? this.omj.hashCode() : 0);
+    return Objects.hash(itm, omj);
   }
-  
-  public boolean equals(Object paramObject) {
-    if (!(paramObject instanceof itm))
-      return false; 
-    itm itm1 = (itm)paramObject;
-    return (this.itm.getResource(this.omj).equals(itm1.itm.getResource(itm1.omj)) && getAlias().equals(itm1.getAlias()));
-  }
+
+  //  public int hashCode() {
+//    null = 5;
+//    null = 97 * null + ((this.itm != null) ? this.itm.hashCode() : 0);
+//    return 97 * null + ((this.omj != null) ? this.omj.hashCode() : 0);
+//  }
+//
+//  public boolean equals(Object paramObject) {
+//    if (!(paramObject instanceof itm))
+//      return false;
+//    itm itm1 = (itm)paramObject;
+//    return (this.itm.getResource(this.omj).equals(itm1.itm.getResource(itm1.omj)) && getAlias().equals(itm1.getAlias()));
+//  }
 }
 
 

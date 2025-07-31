@@ -60,7 +60,7 @@ public class pnd {
       throw new NullPointerException(dpq); 
     if (parameui.getAlias() == null)
       throw new NullPointerException(vjs); 
-    pwn pwn = pwn.chr();
+    pwn pwn = codeguard.licensing.pwn.chr();
     String str1 = parameui.getStorePwd();
     pwn.itm(str1);
     String str2 = parameui.getKeyPwd();

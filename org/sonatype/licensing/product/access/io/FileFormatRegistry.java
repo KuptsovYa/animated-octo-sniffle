@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class FileFormatRegistry {
   private static final Logger evv = LoggerFactory.getLogger(FileFormatRegistry.class);

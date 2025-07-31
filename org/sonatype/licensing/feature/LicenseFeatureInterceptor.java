@@ -38,11 +38,11 @@ public class LicenseFeatureInterceptor implements MethodInterceptor {
   private List<Feature> itm(MethodInvocation paramMethodInvocation) {
     RequiresLicense requiresLicense = omj(paramMethodInvocation);
     Class[] arrayOfClass = requiresLicense.features();
-    ArrayList<Object> arrayList = Lists.newArrayList();
-    Injector injector = (Injector)this.iui.get();
+    ArrayList<Feature> arrayList = Lists.newArrayList();
+    Injector injector = this.iui.get();
     Preconditions.checkState((injector != null), "Could not get an " + Injector.class.getName());
     for (Class clazz : arrayOfClass)
-      arrayList.add(injector.getInstance(clazz)); 
+      arrayList.add((Feature)injector.getInstance(clazz));
     return arrayList;
   }
   

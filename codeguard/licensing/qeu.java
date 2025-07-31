@@ -21,21 +21,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class qeu implements zhj {
-  private static final HashMap sxg = new HashMap<Object, Object>();
-  
+  private static final Map<Class<?>, PersistenceDelegate> sxg = new HashMap<>();
+
   public static int quo = 10240;
   
-  private static final ExceptionListener ysn() {
+  private static ExceptionListener ysn() {
     return new klp();
   }
   
-  public static final synchronized void itm(Class<?> paramClass, PersistenceDelegate paramPersistenceDelegate) {
+  public static synchronized void itm(Class<?> paramClass, PersistenceDelegate paramPersistenceDelegate) {
     sxg.put(paramClass, paramPersistenceDelegate);
   }
   
   protected static synchronized void itm(Encoder paramEncoder) {
-    for (Map.Entry entry : sxg.entrySet())
-      paramEncoder.setPersistenceDelegate((Class)entry.getKey(), (PersistenceDelegate)entry.getValue()); 
+    for (Map.Entry<Class<?>, PersistenceDelegate> entry : sxg.entrySet())
+      paramEncoder.setPersistenceDelegate(entry.getKey(), entry.getValue());
   }
   
   public static void itm(Object paramObject, OutputStream paramOutputStream) throws NullPointerException, PersistenceServiceException {

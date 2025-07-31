@@ -1,6 +1,5 @@
 package org.sonatype.licensing.product.access.internal;
 
-import codeguard.licensing.mpl;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;

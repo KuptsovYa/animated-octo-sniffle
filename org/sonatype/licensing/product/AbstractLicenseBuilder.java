@@ -1,6 +1,5 @@
 package org.sonatype.licensing.product;
 
-import codeguard.licensing.dyw;
 import codeguard.licensing.Obfuscator;
 import org.sonatype.licensing.CustomLicenseContent;
 import org.sonatype.licensing.LicensingException;
@@ -27,7 +26,7 @@ public abstract class AbstractLicenseBuilder implements LicenseBuilder {
   public AbstractLicenseBuilder(ProductDetails paramProductDetails, TrialParam paramTrialParam, String paramString, PreferencesFactory paramPreferencesFactory) {
     this.xrw = paramProductDetails;
     if (paramTrialParam == null) {
-      this.uho = new itm(null);
+      this.uho = new itm();
     } else {
       this.uho = paramTrialParam;
     } 

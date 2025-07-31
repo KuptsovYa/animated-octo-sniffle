@@ -11,7 +11,7 @@ class yiu extends FileFilter {
   }
   
   public String getDescription() {
-    return this.lcw + bab.pwn();
+    return "this.lcw + bab.pwn()";
   }
 }
 

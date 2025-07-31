@@ -3,10 +3,14 @@ package org.sonatype.licensing;
 import codeguard.licensing.rnn;
 import java.util.Map;
 import javax.inject.Inject;
+
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.Features;
 import org.sonatype.licensing.util.LicensingUtil;
 
+@AllArgsConstructor
 public abstract class AbstractLicenseKey extends rnn implements LicenseKey {
   protected Map<String, Feature> availableFeatures;
   

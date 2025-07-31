@@ -1,15 +1,16 @@
 package codeguard.licensing;
 
 import de.schlichtherle.license.LicenseContent;
-import de.schlichtherle.license.LicenseContentException;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 import org.sonatype.licensing.CustomLicenseContent;
 import org.sonatype.licensing.LicenseValidator;
 import org.sonatype.licensing.product.internal.DefaultLicenseKey;
+import org.sonatype.licensing.LicenseContentException;
 
-@Named("licensing.default")
+
+//@Named("licensing.default")
 public class SuperLicenseValidator2 extends LicenseValidator1 implements LicenseValidator {
   private static final String xlf = (new Obfuscator(new long[] { -9211605111142713620L, 391714365510707393L, -7356761750428556372L, 6379560902598103028L })).toString();
   
@@ -22,7 +23,7 @@ public class SuperLicenseValidator2 extends LicenseValidator1 implements License
   
   protected void itm(LicenseContent paramLicenseContent, String paramString1, String paramString2) throws LicenseContentException {
     if (paramString1 == null || (!paramString1.contains(paramString2) && !itm(paramLicenseContent, paramString2)))
-      throw new LicenseContentException(xlf); 
+      throw new LicenseContentException(xlf, paramLicenseContent);
   }
   
   private boolean itm(LicenseContent paramLicenseContent, String paramString) {

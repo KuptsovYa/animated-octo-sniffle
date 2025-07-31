@@ -318,8 +318,8 @@ public class bab implements bao, pej {
   static {
     fvc = (new Obfuscator(new long[] { -2999492566024573771L, -1728025856628382701L })).toString();
     mpl = (new Obfuscator(new long[] { -7559156485370438418L, 5084921010819724770L })).toString();
-    if (!axl && !mpl.equals(mpl.toLowerCase()))
-      throw new AssertionError(); 
+//    if (!axl && !mpl.equals(mpl.toLowerCase()))
+//      throw new AssertionError();
     dpq = pnd.dpq;
     dvh = (new Obfuscator(new long[] { -6788193907359448604L, -2787711522493615434L })).toString();
     juq = (new Obfuscator(new long[] { 4943981370588954830L, 8065447823433585419L, -2749528823549501332L })).toString();

@@ -1,7 +1,7 @@
 package codeguard.licensing;
 
 import de.schlichtherle.license.LicenseContent;
-import de.schlichtherle.license.LicenseContentException;
+import org.sonatype.licensing.LicenseContentException;
 import de.schlichtherle.license.LicenseParamDe;
 import java.util.Date;
 import java.util.Locale;

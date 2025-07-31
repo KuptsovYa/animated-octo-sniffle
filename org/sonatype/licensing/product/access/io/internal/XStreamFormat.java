@@ -6,7 +6,7 @@ import com.thoughtworks.xstream.XStreamException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import javax.enterprise.inject.Typed;
+//import javax.enterprise.inject.Typed;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ import org.sonatype.licensing.product.access.io.FileFormat;
 
 @Named
 @Singleton
-@Typed({FileFormat.class})
+//@Typed({FileFormat.class})
 public class XStreamFormat extends dpq {
   private static final Logger evv = LoggerFactory.getLogger(XStreamFormat.class);
   

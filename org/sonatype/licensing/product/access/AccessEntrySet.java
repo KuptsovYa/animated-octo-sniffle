@@ -36,8 +36,8 @@ public class AccessEntrySet implements Serializable, Iterable<AccessEntry> {
   }
   
   public void add(AccessEntry paramAccessEntry) {
-    if (!axl && paramAccessEntry == null)
-      throw new AssertionError(); 
+//    if (!axl && paramAccessEntry == null)
+//      throw new AssertionError();
     if (bjw().contains(paramAccessEntry))
       bjw().remove(paramAccessEntry); 
     bjw().add(paramAccessEntry);

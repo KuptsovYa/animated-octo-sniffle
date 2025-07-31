@@ -36,7 +36,6 @@ public class DefaultAccessManager implements AccessManager {
 
     private final ConcurrentLinkedQueue<AccessEntry> lak = new ConcurrentLinkedQueue<AccessEntry>();
 
-    private final itm erd = new itm(null);
 
     private Future<?> fnf;
 
@@ -44,9 +43,6 @@ public class DefaultAccessManager implements AccessManager {
     public DefaultAccessManager(AccessPersistence paramAccessPersistence) throws IOException {
         this.svd = paramAccessPersistence;
         this.qks = paramAccessPersistence.load();
-        Thread thread = new Thread(this.erd);
-        thread.setDaemon(true);
-        thread.start();
     }
 
     public boolean add(AccessEntry paramAccessEntry) {
@@ -84,15 +80,15 @@ public class DefaultAccessManager implements AccessManager {
     }
 
     public synchronized void shutdown() throws IOException {
-        this.fjz.debug("Shutdown");
-        try {
-            itm.itm(this.erd);
-        } catch (Exception exception) {
-            this.fjz.warn("Failure when shutting down queue processor", exception);
-        }
-        itm.omj(this.erd);
-        save();
-        this.qks = null;
+//        this.fjz.debug("Shutdown");
+//        try {
+//            itm.itm(this.erd);
+//        } catch (Exception exception) {
+//            this.fjz.warn("Failure when shutting down queue processor", exception);
+//        }
+//        itm.omj(this.erd);
+//        save();
+//        this.qks = null;
     }
 
     public int getMaxEntriesBetweenSave() {

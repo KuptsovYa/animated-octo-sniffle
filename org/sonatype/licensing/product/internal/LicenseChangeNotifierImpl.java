@@ -1,6 +1,5 @@
 package org.sonatype.licensing.product.internal;
 
-import codeguard.licensing.xjx;
 import com.google.common.base.Preconditions;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +15,7 @@ import org.sonatype.licensing.product.LicenseChangeNotifier;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.util.LicenseFingerprintStrategy;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class LicenseChangeNotifierImpl implements LicenseChangeNotifier {
   private final Logger evv = LoggerFactory.getLogger(getClass());
@@ -53,7 +52,7 @@ public class LicenseChangeNotifierImpl implements LicenseChangeNotifier {
           this.wfo.put(licenseChangeListener, atomicReference);
         } 
       } 
-      itm itm = new itm(str, paramBoolean, null);
+      itm itm = new itm(str, paramBoolean);
       if (!itm.equals(atomicReference.getAndSet(itm))) {
         this.evv.trace("Notifying listener: {}", licenseChangeListener);
         try {

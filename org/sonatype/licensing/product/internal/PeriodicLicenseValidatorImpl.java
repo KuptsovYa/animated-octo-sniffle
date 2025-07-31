@@ -20,7 +20,7 @@ import org.sonatype.licensing.product.PeriodicLicenseValidator;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
   private static final String kkm = "${org.sonatype.licensing.product.internal.PeriodicLicenseValidatorImpl";
@@ -47,7 +47,7 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
     this.wnl = (LicenseChangeNotifier)Preconditions.checkNotNull(paramLicenseChangeNotifier);
     this.hbz = paramLong;
     this.evv.debug("Period: {}", Long.valueOf(paramLong));
-    paramBeanLocator.watch(Key.get(LicenseChangeListener.class), new itm(), this);
+//    paramBeanLocator.watch(Key.get(LicenseChangeListener.class), new LicenseChangeListener.itm(), this);
   }
   
   public synchronized void start() {
@@ -82,8 +82,8 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
     this.evv.debug("Validating");
     try {
       ProductLicenseKey productLicenseKey = this.sua.getLicenseDetails();
-      if (!axl && productLicenseKey == null)
-        throw new AssertionError(); 
+//      if (!axl && productLicenseKey == null)
+//        throw new AssertionError();
       notifyListeners(productLicenseKey, true, null);
     } catch (LicensingException licensingException) {
       notifyListeners((ProductLicenseKey)licensingException.getKey(), false, (Exception)licensingException);
@@ -104,14 +104,14 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
     } 
   }
   
-  static final class itm implements Mediator<Named, LicenseChangeListener, PeriodicLicenseValidatorImpl> {
-    public void itm(BeanEntry<Named, LicenseChangeListener> param1BeanEntry, PeriodicLicenseValidatorImpl param1PeriodicLicenseValidatorImpl) {
-      if (PeriodicLicenseValidatorImpl.itm(param1PeriodicLicenseValidatorImpl))
-        PeriodicLicenseValidatorImpl.omj(param1PeriodicLicenseValidatorImpl); 
-    }
-    
-    public void omj(BeanEntry<Named, LicenseChangeListener> param1BeanEntry, PeriodicLicenseValidatorImpl param1PeriodicLicenseValidatorImpl) {}
-  }
+//  public static final class itm implements Mediator<Named, LicenseChangeListener, PeriodicLicenseValidatorImpl> {
+//    public void itm(BeanEntry<Named, LicenseChangeListener> param1BeanEntry, PeriodicLicenseValidatorImpl param1PeriodicLicenseValidatorImpl) {
+//      if (PeriodicLicenseValidatorImpl.itm(param1PeriodicLicenseValidatorImpl))
+//        PeriodicLicenseValidatorImpl.omj(param1PeriodicLicenseValidatorImpl);
+//    }
+//
+//    public static void omj(BeanEntry<Named, LicenseChangeListener> param1BeanEntry, PeriodicLicenseValidatorImpl param1PeriodicLicenseValidatorImpl) {}
+//  }
 }
 
 

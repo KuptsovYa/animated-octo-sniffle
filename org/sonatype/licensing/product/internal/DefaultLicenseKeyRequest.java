@@ -9,11 +9,7 @@ import codeguard.licensing.omz;
 import codeguard.licensing.whz;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.auth.x500.X500Principal;
@@ -102,8 +98,8 @@ public class DefaultLicenseKeyRequest extends bos implements ProductLicenseKeyRe
       agq.itm(haa);
     } 
     Properties properties = getProperties();
-    for (String str1 : properties.keySet()) {
-      String str2 = str1;
+    for (Object str1 : properties.keySet()) {
+      String str2 = (String) str1;
       aua aua = new aua();
       aua.bab(str2);
       aua.vep(properties.getProperty(str2));

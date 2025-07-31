@@ -5,10 +5,10 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Укажите свои значения для groupId, artifactId и версии -->
+    <!-- Укажите свои значения -->
     <groupId>com.example</groupId>
-    <artifactId>licensing</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>license-bundle</artifactId>
+    <version>1.6.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -18,19 +18,17 @@
     </properties>
 
     <dependencies>
-        <!-- Guava -->
+        <!-- Основные зависимости -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>
         </dependency>
-        <!-- Guice -->
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>5.1.0</version>
         </dependency>
-        <!-- XStream -->
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
@@ -46,32 +44,57 @@
             <artifactId>commons-codec</artifactId>
             <version>1.15</version>
         </dependency>
-        <!-- Plexus Utils -->
-<!--        <dependency>-->
-<!--            <groupId>org.codehaus.plexus</groupId>-->
-<!--            <artifactId>plexus-utils</artifactId>-->
-<!--            <version>3.9.0</version>-->
-<!--        </dependency>-->
-        <!-- SLF4J API -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.6</version>
         </dependency>
-        <!-- Sisu Inject -->
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.sisu</groupId>-->
-<!--            <artifactId>org.eclipse.sisu.inject</artifactId>-->
-<!--            <version>REPLACE_WITH_SISU_VERSION</version>-->
-<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.eclipse.sisu/sisu-inject -->
+        <dependency>
+            <groupId>org.eclipse.sisu</groupId>
+            <artifactId>sisu-inject</artifactId>
+            <version>0.9.0.M4</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>4.0.1</version> <!-- Or the latest stable Jakarta EE version -->
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.plexus/plexus-utils -->
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-utils</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.plexus/plexus-xml -->
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-xml</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.sisu/org.eclipse.sisu.plexus -->
+        <dependency>
+            <groupId>org.eclipse.sisu</groupId>
+            <artifactId>org.eclipse.sisu.plexus</artifactId>
+            <version>0.9.0.M4</version>
+        </dependency>
+        <!-- при необходимости добавьте прочие библиотеки -->
     </dependencies>
 
     <build>
+        <!-- Путь к исходникам (здесь весь код находится прямо в корне проекта) -->
         <sourceDirectory>${project.basedir}</sourceDirectory>
 
-
         <plugins>
-
             <!-- Компиляция -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -83,7 +106,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade plugin: создаёт fat JAR с классами и зависимостями -->
+            <!-- Создание fat JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -91,14 +114,12 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
+                        <goals><goal>shade</goal></goals>
                         <configuration>
                             <createDependencyReducedPom>true</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- Укажите свой главный класс -->
+                                    <!-- Главный класс приложения -->
                                     <mainClass>codeguard.licensing.Main</mainClass>
                                 </transformer>
                             </transformers>

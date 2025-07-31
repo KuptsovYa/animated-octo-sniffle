@@ -38,7 +38,8 @@ public class AccessEntry implements Serializable {
       return false; 
     AccessEntry accessEntry = (AccessEntry)paramObject;
     if ((this.dcn != null) ? !this.dcn.equals(accessEntry.dcn) : (accessEntry.dcn != null))
-      return false; 
+      return false;
+    return true;
   }
   
   public int hashCode() {

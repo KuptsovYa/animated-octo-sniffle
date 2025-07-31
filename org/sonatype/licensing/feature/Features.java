@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-@Named("licensing.default")
+//@Named("licensing.default")
 @Singleton
 public class Features {
   private Map<String, Feature> bwp;

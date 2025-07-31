@@ -16,7 +16,7 @@ public final class Obfuscator {
   
   public static String obfuscate(String paramString) {
     byte[] arrayOfByte;
-    if (-1 != paramString.indexOf(false))
+    if (-1 != paramString.indexOf("\0"))
       throw new IllegalArgumentException((new Obfuscator(new long[] { 2598583114197433456L, -2532951909540716745L, 1850312903926917213L, -7324743161950196342L, 3319654553699491298L })).toString());
     try {
       arrayOfByte = paramString.getBytes(CODIROVKA);
@@ -90,7 +90,7 @@ public final class Obfuscator {
     } catch (UnsupportedEncodingException unsupportedEncodingException) {
       throw new AssertionError(unsupportedEncodingException);
     } 
-    int j = str.indexOf(false);
+    int j = str.indexOf("\0");
     return (-1 == j) ? str : str.substring(0, j);
   }
 }
