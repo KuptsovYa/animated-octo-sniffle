@@ -21,9 +21,11 @@ import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
+import org.springframework.stereotype.Component;
 
 //@Named("licensing.default")
 @Singleton
+@Component("DefaultProductLicenseManager")
 public class DefaultProductLicenseManager implements ProductLicenseManager {
   private final TrialLicenseManager aff;
   
@@ -37,7 +39,7 @@ public class DefaultProductLicenseManager implements ProductLicenseManager {
     this.zuc = paramLicenseBuilder;
     this.wnl = (LicenseChangeNotifier)Preconditions.checkNotNull(paramLicenseChangeNotifier);
   }
-  
+
   public ProductLicenseKey getLicenseDetails() throws LicensingException {
     LicenseKey licenseKey = this.aff.verifyLicense(this.zuc.buildPublicParam());
     return itm(licenseKey);
