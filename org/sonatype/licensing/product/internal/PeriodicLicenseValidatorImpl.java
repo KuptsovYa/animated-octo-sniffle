@@ -42,9 +42,9 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
   private boolean nwg;
   
   @Inject
-  public PeriodicLicenseValidatorImpl(ProductLicenseManager paramProductLicenseManager, LicenseChangeNotifier paramLicenseChangeNotifier, BeanLocator paramBeanLocator, @Named("${org.sonatype.licensing.product.internal.PeriodicLicenseValidatorImpl.period:-300000}") long paramLong) {
-    this.sua = (ProductLicenseManager)Preconditions.checkNotNull(paramProductLicenseManager);
-    this.wnl = (LicenseChangeNotifier)Preconditions.checkNotNull(paramLicenseChangeNotifier);
+  public PeriodicLicenseValidatorImpl(@Named("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager, LicenseChangeNotifier paramLicenseChangeNotifier, BeanLocator paramBeanLocator, @Named("${org.sonatype.licensing.product.internal.PeriodicLicenseValidatorImpl.period:-300000}") long paramLong) {
+    this.sua = Preconditions.checkNotNull(paramProductLicenseManager);
+    this.wnl = Preconditions.checkNotNull(paramLicenseChangeNotifier);
     this.hbz = paramLong;
     this.evv.debug("Period: {}", Long.valueOf(paramLong));
 //    paramBeanLocator.watch(Key.get(LicenseChangeListener.class), new LicenseChangeListener.itm(), this);
