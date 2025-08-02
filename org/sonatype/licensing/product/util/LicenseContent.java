@@ -23,7 +23,7 @@ public class LicenseContent {
   @Inject
   public LicenseContent(
 //          LicenseBuilder paramLicenseBuilder,
-          ProductLicenseManager paramProductLicenseManager,
+          @Named("PeriodicLicenseValidatorImpl") ProductLicenseManager paramProductLicenseManager,
           PreferencesFactory paramPreferencesFactory) {
     this.sua = paramProductLicenseManager;
 //    this.qbc = paramLicenseBuilder.getPreferenceNodePath();

@@ -7,6 +7,8 @@ import java.io.InputStream;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+
+import jakarta.inject.Qualifier;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.io.InputStreamFacade;
 import org.codehaus.plexus.util.io.RawInputStreamFacade;

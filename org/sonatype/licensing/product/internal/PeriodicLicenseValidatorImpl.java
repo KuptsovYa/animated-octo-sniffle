@@ -20,7 +20,7 @@ import org.sonatype.licensing.product.PeriodicLicenseValidator;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
 
-//@Named("licensing.default")
+@Named("PeriodicLicenseValidatorImpl")
 @Singleton
 public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
   private static final String kkm = "${org.sonatype.licensing.product.internal.PeriodicLicenseValidatorImpl";
