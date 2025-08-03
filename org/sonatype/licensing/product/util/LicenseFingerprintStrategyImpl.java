@@ -12,9 +12,11 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.SslKeyContainer;
+import org.springframework.stereotype.Service;
 
 @Named
 @Singleton
+@Service("LicenseFingerprintStrategyImpl")
 public class LicenseFingerprintStrategyImpl implements LicenseFingerprintStrategy {
   public String calculate(ProductLicenseKey paramProductLicenseKey) {
     MessageDigest messageDigest;

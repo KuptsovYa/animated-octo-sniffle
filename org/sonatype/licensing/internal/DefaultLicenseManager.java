@@ -28,7 +28,8 @@ public class DefaultLicenseManager implements LicenseManager {
   
   private final LicenseValidator wst;
   
-  public DefaultLicenseManager(Provider<LicenseKey> paramProvider, FeatureValidator paramFeatureValidator) {
+  public DefaultLicenseManager(Provider<LicenseKey> paramProvider,
+                               FeatureValidator paramFeatureValidator) {
     this(paramProvider, paramFeatureValidator, (LicenseValidator)new LicenseValidator1());
   }
   

@@ -21,8 +21,12 @@ import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.FeatureValidator;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //@Named("licensing.default")
+@Service
+@Qualifier("DefaultTrialLicenseManager")
 public class DefaultTrialLicenseManager implements TrialLicenseManager {
   private final Logger evv = LoggerFactory.getLogger(getClass());
   

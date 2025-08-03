@@ -14,9 +14,13 @@ import org.sonatype.licensing.product.LicenseChangeListener;
 import org.sonatype.licensing.product.LicenseChangeNotifier;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.util.LicenseFingerprintStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 //@Named("licensing.default")
 @Singleton
+@Component
 public class LicenseChangeNotifierImpl implements LicenseChangeNotifier {
   private final Logger evv = LoggerFactory.getLogger(getClass());
   
@@ -27,9 +31,11 @@ public class LicenseChangeNotifierImpl implements LicenseChangeNotifier {
   private final LicenseFingerprintStrategy fcp;
   
   private final Map<LicenseChangeListener, AtomicReference<itm>> wfo = new WeakHashMap<LicenseChangeListener, AtomicReference<itm>>();
-  
-  @Inject
-  public LicenseChangeNotifierImpl(List<LicenseChangeListener> paramList, DefaultLicenseFeatureVerifier paramDefaultLicenseFeatureVerifier, LicenseFingerprintStrategy paramLicenseFingerprintStrategy) {
+
+  @Autowired
+  public LicenseChangeNotifierImpl(List<LicenseChangeListener> paramList,
+                                   DefaultLicenseFeatureVerifier paramDefaultLicenseFeatureVerifier,
+                                   @Qualifier("LicenseFingerprintStrategyImpl") LicenseFingerprintStrategy paramLicenseFingerprintStrategy) {
     this.yhh = (DefaultLicenseFeatureVerifier)Preconditions.checkNotNull(paramDefaultLicenseFeatureVerifier);
     this.bji = (List<LicenseChangeListener>)Preconditions.checkNotNull(paramList);
     this.fcp = (LicenseFingerprintStrategy)Preconditions.checkNotNull(paramLicenseFingerprintStrategy);

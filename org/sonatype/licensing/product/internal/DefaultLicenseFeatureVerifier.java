@@ -15,9 +15,12 @@ import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.FeatureValidator;
 import org.sonatype.licensing.feature.LicenseFeatureVerifier;
 import org.sonatype.licensing.product.ProductLicenseKey;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //@Named("licensing.default")
-@Singleton
+@Service
 public class DefaultLicenseFeatureVerifier implements LicenseFeatureVerifier {
   private final Logger evv = LoggerFactory.getLogger(getClass());
   
@@ -28,9 +31,10 @@ public class DefaultLicenseFeatureVerifier implements LicenseFeatureVerifier {
   private ProductLicenseKey ugf;
   
   private boolean utz;
-  
-  @Inject
-  public DefaultLicenseFeatureVerifier(FeatureValidator paramFeatureValidator) {
+
+  @Autowired
+  public DefaultLicenseFeatureVerifier(
+          @Qualifier("DefaultFeatureValidator") FeatureValidator paramFeatureValidator) {
     this.gyk = paramFeatureValidator;
   }
   

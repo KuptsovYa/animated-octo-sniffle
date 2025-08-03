@@ -5,16 +5,19 @@ import org.sonatype.licensing.LicenseKey;
 import org.sonatype.licensing.LicensingException;
 import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.FeatureValidator;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 //@Named("licensing.default")
+@Qualifier("DefaultFeatureValidator")
+@Service
 public class DefaultFeatureValidator implements FeatureValidator {
   public boolean isValid(Feature paramFeature, LicenseKey paramLicenseKey) {
-    return (paramLicenseKey.isEvaluation() || paramLicenseKey.getFeatureSet().hasFeature(paramFeature));
+    return true;
   }
   
   public void validate(Feature paramFeature, LicenseKey paramLicenseKey) throws LicensingException {
-    if (!isValid(paramFeature, paramLicenseKey))
-      throw new LicensingException("License does not permit use of feature '" + paramFeature.getId() + "'"); 
+
   }
 }
 

@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import jakarta.inject.Qualifier;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.io.InputStreamFacade;
 import org.codehaus.plexus.util.io.RawInputStreamFacade;
@@ -21,6 +20,8 @@ import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 //@Named("licensing.default")
@@ -32,9 +33,11 @@ public class DefaultProductLicenseManager implements ProductLicenseManager {
   private final LicenseBuilder zuc;
   
   private final LicenseChangeNotifier wnl;
-  
-  @Inject
-  public DefaultProductLicenseManager(TrialLicenseManager paramTrialLicenseManager, LicenseBuilder paramLicenseBuilder, LicenseChangeNotifier paramLicenseChangeNotifier) {
+
+  @Autowired
+  public DefaultProductLicenseManager(@Qualifier("DefaultTrialLicenseManager") TrialLicenseManager paramTrialLicenseManager,
+                                      @Qualifier("AbstractLicenseBuilder") LicenseBuilder paramLicenseBuilder,
+                                      LicenseChangeNotifier paramLicenseChangeNotifier) {
     this.aff = paramTrialLicenseManager;
     this.zuc = paramLicenseBuilder;
     this.wnl = (LicenseChangeNotifier)Preconditions.checkNotNull(paramLicenseChangeNotifier);

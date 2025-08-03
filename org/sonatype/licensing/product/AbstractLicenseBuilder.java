@@ -9,19 +9,26 @@ import org.sonatype.licensing.internal.DefaultKeyStoreParam;
 import org.sonatype.licensing.trial.TrialLicenseParam;
 import org.sonatype.licensing.trial.TrialParam;
 import org.sonatype.licensing.util.LicensingUtil;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
+@Qualifier("AbstractLicenseBuilder")
 public class AbstractLicenseBuilder implements LicenseBuilder {
   private static final String rfk = (new Obfuscator(new long[] { -1690058102093644793L, 3975167369736229458L, 6881864084162147984L })).toString();
   
   private static final String ohr = (new Obfuscator(new long[] { 348214743486407250L, -5665724013535777408L, 5783893877095155298L, -9222320762758361454L, 6192500194308087316L, 3477852850060463659L, 7694194449945358034L, -362616691434936395L, -8857163466429480282L })).toString();
   
-  private final ProductDetails xrw;
+  private ProductDetails xrw = null;
   
-  private final TrialParam uho;
+  private TrialParam uho = null;
   
-  private final String gyh;
+  private String gyh = null;
   
-  private final PreferencesFactory xpt;
+  private PreferencesFactory xpt = null;
+
+  public AbstractLicenseBuilder() {
+  }
 
   public AbstractLicenseBuilder(ProductDetails paramProductDetails, TrialParam paramTrialParam, String paramString, PreferencesFactory paramPreferencesFactory) {
     this.xrw = paramProductDetails;

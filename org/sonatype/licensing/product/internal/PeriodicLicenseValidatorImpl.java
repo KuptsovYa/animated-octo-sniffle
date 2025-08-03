@@ -19,6 +19,8 @@ import org.sonatype.licensing.product.LicenseChangeNotifier;
 import org.sonatype.licensing.product.PeriodicLicenseValidator;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @Named("PeriodicLicenseValidatorImpl")
 @Singleton
@@ -41,15 +43,15 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
   
   private boolean nwg;
   
-  @Inject
-  public PeriodicLicenseValidatorImpl(@Named("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager,
+  @Autowired
+  public PeriodicLicenseValidatorImpl(@Qualifier("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager,
                                       LicenseChangeNotifier paramLicenseChangeNotifier,
                                       BeanLocator paramBeanLocator,
-                                      @Named("${org.sonatype.licensing.product.internal.PeriodicLicenseValidatorImpl.period:-300000}") long paramLong) {
+                                      long paramLong) {
     this.sua = Preconditions.checkNotNull(paramProductLicenseManager);
     this.wnl = Preconditions.checkNotNull(paramLicenseChangeNotifier);
-    this.hbz = paramLong;
-    this.evv.debug("Period: {}", Long.valueOf(paramLong));
+    this.hbz = Long.valueOf("300000000000");
+    this.evv.debug("Period: {}", Long.valueOf("300000000000"));
 //    paramBeanLocator.watch(Key.get(LicenseChangeListener.class), new LicenseChangeListener.itm(), this);
   }
   
