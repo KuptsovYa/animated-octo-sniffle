@@ -1,5 +1,7 @@
 package org.sonatype.licensing.feature;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Collections;
 import java.util.Map;
 import javax.inject.Inject;
@@ -8,6 +10,7 @@ import javax.inject.Singleton;
 
 //@Named("licensing.default")
 @Singleton
+@Component
 public class Features {
   private Map<String, Feature> bwp;
   

@@ -13,9 +13,14 @@ import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.Features;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.SslKeyContainer;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 @EqualsAndHashCode(callSuper = true)
 //@Named("licensing.default")
+@Component("DefaultLicenseKey")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DefaultLicenseKey extends AbstractLicenseKey implements LicenseKey, ProductLicenseKey {
   private final Logger fjz = LoggerFactory.getLogger(DefaultLicenseKey.class);
   
