@@ -7,10 +7,10 @@ import org.sonatype.licensing.feature.Feature;
 import org.sonatype.licensing.feature.Features;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-@AutoConfiguration
+@Configuration
 public class LicenseKeyAutoConfiguration {
 
     @Bean
