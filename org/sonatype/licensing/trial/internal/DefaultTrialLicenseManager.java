@@ -5,6 +5,9 @@ import codeguard.licensing.LicenseValidator1;
 import codeguard.licensing.zts;
 import de.schlichtherle.license.LicenseContent;
 import java.io.File;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,7 +21,10 @@ import org.sonatype.licensing.LicenseKeyRequest;
 import org.sonatype.licensing.LicenseValidator;
 import org.sonatype.licensing.LicensingException;
 import org.sonatype.licensing.feature.Feature;
+import org.sonatype.licensing.feature.FeatureSet;
 import org.sonatype.licensing.feature.FeatureValidator;
+import org.sonatype.licensing.feature.Features;
+import org.sonatype.licensing.product.internal.DefaultLicenseKey;
 import org.sonatype.licensing.trial.TrialLicenseManager;
 import org.sonatype.licensing.trial.TrialLicenseParam;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,19 +36,123 @@ import org.springframework.stereotype.Service;
 public class DefaultTrialLicenseManager implements TrialLicenseManager {
   private final Logger evv = LoggerFactory.getLogger(getClass());
   
-  private final Provider<LicenseKey> cgs;
+  private final Provider<LicenseKey> cgs = new Provider<LicenseKey>() {
+    @Override
+    public LicenseKey get() {
+      return new DefaultLicenseKey(new Features(Collections.emptyMap())) {
+        @Override
+        public void populateFromLicenseContent(CustomLicenseContent paramCustomLicenseContent) {
+
+        }
+
+        @Override
+        public String getContactName() {
+          return "name";
+        }
+
+        @Override
+        public void setContactName(String paramString) {
+
+        }
+
+        @Override
+        public String getContactEmailAddress() {
+          return "address";
+        }
+
+        @Override
+        public void setContactEmailAddress(String paramString) {
+
+        }
+
+        @Override
+        public String getContactTelephone() {
+          return "79276205537";
+        }
+
+        @Override
+        public void setContactTelephone(String paramString) {
+
+        }
+
+        @Override
+        public String getContactCompany() {
+          return "OOO JAVA SLAVES";
+        }
+
+        @Override
+        public void setContactCompany(String paramString) {
+
+        }
+
+        @Override
+        public String getContactCountry() {
+          return "RUSSIA";
+        }
+
+        @Override
+        public void setContactCountry(String paramString) {
+
+        }
+
+        @Override
+        public boolean isEvaluation() {
+          return true;
+        }
+
+        @Override
+        public void setEvaluation(boolean paramBoolean) {
+
+        }
+
+        @Override
+        public List<String> getRawFeatures() {
+          return Collections.emptyList();
+        }
+
+        @Override
+        public FeatureSet getFeatureSet() {
+          return null;
+        }
+
+        @Override
+        public void setFeatureSet(FeatureSet paramFeatureSet) {
+
+        }
+
+        @Override
+        public Date getEffectiveDate() {
+          return new Date(1999, 5, 9);
+        }
+
+        @Override
+        public void setEffectiveDate(Date paramDate) {
+
+        }
+
+        @Override
+        public Date getExpirationDate() {
+          return new Date(2077, 5, 9);
+        }
+
+        @Override
+        public void setExpirationDate(Date paramDate) {
+
+        }
+      };
+    }
+  };
   
   private final FeatureValidator fmh;
   
   private final LicenseValidator wst;
   
-  public DefaultTrialLicenseManager(Provider<LicenseKey> paramProvider, FeatureValidator paramFeatureValidator) {
-    this(paramProvider, paramFeatureValidator, (LicenseValidator)new LicenseValidator1());
+  public DefaultTrialLicenseManager( FeatureValidator paramFeatureValidator) {
+    this(paramFeatureValidator, (LicenseValidator)new LicenseValidator1());
   }
   
   @Inject
-  public DefaultTrialLicenseManager(Provider<LicenseKey> paramProvider, FeatureValidator paramFeatureValidator, @Nullable LicenseValidator paramLicenseValidator) {
-    this.cgs = paramProvider;
+  public DefaultTrialLicenseManager(FeatureValidator paramFeatureValidator, @Nullable LicenseValidator paramLicenseValidator) {
     this.fmh = paramFeatureValidator;
     this.wst = paramLicenseValidator;
   }

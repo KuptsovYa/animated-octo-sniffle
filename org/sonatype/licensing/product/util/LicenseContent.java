@@ -10,6 +10,8 @@ import org.sonatype.licensing.PreferencesFactory;
 import org.sonatype.licensing.product.LicenseBuilder;
 import org.sonatype.licensing.product.ProductLicenseKey;
 import org.sonatype.licensing.product.ProductLicenseManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @Named
 @Singleton
@@ -20,11 +22,11 @@ public class LicenseContent {
 
   private final PreferencesFactory xpt;
 
-  @Inject
+  @Autowired
   public LicenseContent(
 //          LicenseBuilder paramLicenseBuilder,
-          @Named("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager,
-          PreferencesFactory paramPreferencesFactory) {
+          @Qualifier("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager,
+          @Qualifier("DefaultPreferencesFactory") PreferencesFactory paramPreferencesFactory) {
     this.sua = paramProductLicenseManager;
 //    this.qbc = paramLicenseBuilder.getPreferenceNodePath();
     this.xpt = paramPreferencesFactory;

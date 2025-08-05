@@ -45,9 +45,7 @@ public class PeriodicLicenseValidatorImpl implements PeriodicLicenseValidator {
   
   @Autowired
   public PeriodicLicenseValidatorImpl(@Qualifier("DefaultProductLicenseManager") ProductLicenseManager paramProductLicenseManager,
-                                      LicenseChangeNotifier paramLicenseChangeNotifier,
-                                      BeanLocator paramBeanLocator,
-                                      long paramLong) {
+                                      LicenseChangeNotifier paramLicenseChangeNotifier) {
     this.sua = Preconditions.checkNotNull(paramProductLicenseManager);
     this.wnl = Preconditions.checkNotNull(paramLicenseChangeNotifier);
     this.hbz = Long.valueOf("300000000000");
