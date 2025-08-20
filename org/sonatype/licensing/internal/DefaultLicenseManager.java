@@ -5,6 +5,10 @@ import codeguard.licensing.LicenseValidator1;
 import de.schlichtherle.license.LicenseContent;
 import de.schlichtherle.license.LicenseContentException;
 import java.io.File;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,115 +21,182 @@ import org.sonatype.licensing.LicenseParam;
 import org.sonatype.licensing.LicenseValidator;
 import org.sonatype.licensing.LicensingException;
 import org.sonatype.licensing.feature.Feature;
+import org.sonatype.licensing.feature.FeatureSet;
 import org.sonatype.licensing.feature.FeatureValidator;
+import org.sonatype.licensing.product.ProductLicenseKey;
+import org.sonatype.licensing.product.SslKeyContainer;
+import org.springframework.stereotype.Service;
 
 //@Named("licensing.default")
 @Deprecated
+@Service
 public class DefaultLicenseManager implements LicenseManager {
-  private final Provider<LicenseKey> cgs;
-  
-  private final FeatureValidator fmh;
-  
-  private final LicenseValidator wst;
-  
-  public DefaultLicenseManager(Provider<LicenseKey> paramProvider,
-                               FeatureValidator paramFeatureValidator) {
-    this(paramProvider, paramFeatureValidator, (LicenseValidator)new LicenseValidator1());
+  private final Provider<LicenseKey> cgs = new Provider<LicenseKey>() {
+    @Override
+    public LicenseKey get() {
+      return new ProductLicenseKey() {
+        @Override
+        public List<SslKeyContainer> getSslKeys() {
+          return Collections.emptyList();
+        }
+
+        @Override
+        public int getLicensedUsers() {
+          return 0;
+        }
+
+        @Override
+        public boolean isFreeLicense() {
+          return false;
+        }
+
+        @Override
+        public void setProperties(Properties paramProperties) {
+
+        }
+
+        @Override
+        public Properties getProperties() {
+          return null;
+        }
+
+        @Override
+        public void populateFromLicenseContent(CustomLicenseContent paramCustomLicenseContent) {
+
+        }
+
+        @Override
+        public String getContactName() {
+          return "NEXUS CONTORA PIDORASOV";
+        }
+
+        @Override
+        public void setContactName(String paramString) {
+
+        }
+
+        @Override
+        public String getContactEmailAddress() {
+          return "NEXUS CONTORA PIDORASOV";
+        }
+
+        @Override
+        public void setContactEmailAddress(String paramString) {
+
+        }
+
+        @Override
+        public String getContactTelephone() {
+          return "NEXUS CONTORA PIDORASOV";
+        }
+
+        @Override
+        public void setContactTelephone(String paramString) {
+
+        }
+
+        @Override
+        public String getContactCompany() {
+          return "NEXUS CONTORA PIDORASOV";
+        }
+
+        @Override
+        public void setContactCompany(String paramString) {
+
+        }
+
+        @Override
+        public String getContactCountry() {
+          return "NEXUS CONTORA PIDORASOV";
+        }
+
+        @Override
+        public void setContactCountry(String paramString) {
+
+        }
+
+        @Override
+        public boolean isEvaluation() {
+          return true;
+        }
+
+        @Override
+        public void setEvaluation(boolean paramBoolean) {
+
+        }
+
+        @Override
+        public List<String> getRawFeatures() {
+          return Collections.emptyList();
+        }
+
+        @Override
+        public FeatureSet getFeatureSet() {
+          return null;
+        }
+
+        @Override
+        public void setFeatureSet(FeatureSet paramFeatureSet) {
+
+        }
+
+        @Override
+        public Date getEffectiveDate() {
+          return new Date(1999, 9, 5);
+        }
+
+        @Override
+        public void setEffectiveDate(Date paramDate) {
+
+        }
+
+        @Override
+        public Date getExpirationDate() {
+          return new Date(2077, 9, 5);
+        }
+
+        @Override
+        public void setExpirationDate(Date paramDate) {
+
+        }
+      };
+    }
+  };
+
+  public DefaultLicenseManager() {
+
   }
-  
-  @Inject
-  public DefaultLicenseManager(Provider<LicenseKey> paramProvider, FeatureValidator paramFeatureValidator, @Nullable LicenseValidator paramLicenseValidator) {
-    this.cgs = paramProvider;
-    this.fmh = paramFeatureValidator;
-    this.wst = paramLicenseValidator;
-  }
+
 
   private void applyProLicense(LicenseKey key) {
-    key.setContactName("Nikita");
-    key.setContactCompany("MyCompany");
-    key.setContactEmailAddress("nikita@example.com");
-    key.setContactTelephone("1234567890");
-    key.setContactCountry("Russia");
-    key.setEvaluation(false);
-    key.setExpirationDate(new java.util.Date(2038 - 1900, 0, 1));
-    key.setEffectiveDate(new java.util.Date());
+    key = cgs.get();
   }
-  
-  public LicenseKey createLicense(LicenseParam paramLicenseParam, LicenseKeyRequest paramLicenseKeyRequest) throws LicensingException {
-    try {
-      File file1 = paramLicenseKeyRequest.getLicenseKeyFile();
-      File file2 = file1.getParentFile();
-      if (!file2.exists())
-        file2.mkdirs(); 
-      aec AECBLYA = new aec(paramLicenseParam, this.wst);
-      AECBLYA.itm((LicenseContent)paramLicenseKeyRequest.getLicenseContent(), file1);
-    } catch (LicenseContentException licenseContentException) {
-      throw new LicensingException(itm(licenseContentException), licenseContentException);
-    } catch (Exception exception) {
-      throw new LicensingException("Unable to create license", exception);
-    } 
-    LicenseKey licenseKey = (LicenseKey)this.cgs.get();
-    licenseKey.populateFromLicenseContent(paramLicenseKeyRequest.getLicenseContent());
-    return licenseKey;
-  }
-  
-  public LicenseKey installLicense(LicenseParam paramLicenseParam, File paramFile) throws LicensingException {
-    LicenseKey licenseKey;
-    try {
-      licenseKey = (LicenseKey)this.cgs.get();
-      CustomLicenseContent customLicenseContent = (CustomLicenseContent)(new aec(paramLicenseParam, this.wst)).itm(paramFile);
-      licenseKey.populateFromLicenseContent(customLicenseContent);
-    } catch (LicenseContentException licenseContentException) {
-      throw new LicensingException(itm(licenseContentException), licenseContentException);
-    } catch (Exception exception) {
-      throw new LicensingException("Unable to install license: " + itm(exception), exception);
-    } 
-    return licenseKey;
-  }
-  
-  public void uninstallLicense(LicenseParam paramLicenseParam) throws LicensingException {
-    try {
-      (new aec(paramLicenseParam, this.wst)).bao();
-    } catch (LicenseContentException licenseContentException) {
-      throw new LicensingException(itm(licenseContentException), licenseContentException);
-    } catch (Exception exception) {
-      throw new LicensingException("Unable to uninstall license: " + itm(exception), exception);
-    } 
-  }
-  
-  public LicenseKey verifyLicense(LicenseParam paramLicenseParam) throws LicensingException {
-    LicenseKey licenseKey = (LicenseKey)this.cgs.get();
-    try {
-      CustomLicenseContent customLicenseContent = (CustomLicenseContent)(new aec(paramLicenseParam, this.wst)).mif();
-      licenseKey.populateFromLicenseContent(customLicenseContent);
-    } catch (LicenseContentException licenseContentException) {
-      throw new LicensingException(itm(licenseContentException), licenseContentException);
-    } catch (Exception exception) {
-      throw new LicensingException("Unable to verify license", exception);
-    }
 
-    return licenseKey;
+  public LicenseKey createLicense(LicenseParam paramLicenseParam, LicenseKeyRequest paramLicenseKeyRequest) throws LicensingException {
+    return cgs.get();
   }
-  
+
+  public LicenseKey installLicense(LicenseParam paramLicenseParam, File paramFile) throws LicensingException {
+    return cgs.get();
+  }
+
+  public void uninstallLicense(LicenseParam paramLicenseParam) throws LicensingException {
+
+  }
+
+  public LicenseKey verifyLicense(LicenseParam paramLicenseParam) throws LicensingException {
+    return cgs.get();
+  }
+
   public LicenseKey verifyLicense(LicenseParam paramLicenseParam, File paramFile) throws LicensingException {
-    LicenseKey licenseKey = (LicenseKey)this.cgs.get();
-    try {
-      CustomLicenseContent customLicenseContent = (new aec(paramLicenseParam, this.wst)).rkn(paramFile);
-      licenseKey.populateFromLicenseContent(customLicenseContent);
-    } catch (LicenseContentException licenseContentException) {
-      throw new LicensingException(itm(licenseContentException), licenseContentException);
-    } catch (Exception exception) {
-      throw new LicensingException("Unable to verify license", exception);
-    } 
-    return licenseKey;
+    return cgs.get();
   }
-  
+
   public void validateFeature(LicenseKey paramLicenseKey, Feature paramFeature) throws LicensingException {
-    this.fmh.validate(paramFeature, paramLicenseKey);
   }
-  
+
   private String itm(Exception paramException) {
-    return (paramException.getLocalizedMessage() != null) ? paramException.getLocalizedMessage() : paramException.getMessage();
+    return "NEXUS CONTORA PIDORASOV";
   }
 }
 
